@@ -64,9 +64,16 @@ header .container {
     align-items: center;
 }
 
-.logo img {
-    height: 50px;
-    border-radius: 50%;
+.logo span {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--white);
+    transition: color 0.3s ease;
+}
+
+.logo span:hover {
+    color: var(--gray);
 }
 
 header nav ul {
@@ -86,19 +93,6 @@ header nav ul li a {
 
 header nav ul li a:hover {
     color: var(--neon-purple);
-}
-
-.cta-button {
-    background-color: var(--neon-purple);
-    color: var(--dark-blue);
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-weight: 700;
-    transition: background-color 0.3s ease;
-}
-
-.cta-button:hover {
-    background-color: var(--neon-green);
 }
 
 /* Hero Section */
@@ -217,6 +211,42 @@ section h2 {
     color: var(--gray);
 }
 
+/* Platforms Section */
+.platforms-section {
+    background-color: var(--dark-blue);
+}
+
+.platform-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.platform-card {
+    background-color: var(--light-blue);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.platform-card:hover {
+    transform: translateY(-10px);
+    background-color: var(--dark-blue);
+}
+
+.platform-card h3 {
+    font-size: 1.4em;
+    color: var(--white);
+    margin-bottom: 10px;
+}
+
+.platform-card p {
+    color: var(--gray);
+    font-size: 0.9em;
+}
+
 /* About Section */
 .about-section .container {
     display: flex;
@@ -241,56 +271,17 @@ section h2 {
     font-size: 1.1em;
 }
 
-.about-illustration {
-    flex: 1;
-    text-align: center;
-}
-
-.about-illustration img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-/* Testimonials Section */
-.testimonials-section {
-    background-color: var(--light-blue);
-}
-
-.testimonial-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-}
-
-.testimonial-card {
-    background-color: var(--dark-blue);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-
-.testimonial-card p {
-    font-style: italic;
-    color: var(--gray);
-    margin-bottom: 20px;
-}
-
-.testimonial-card h4 {
-    color: var(--neon-purple);
-    text-align: right;
-}
-
 /* Contact Section */
 .contact-section .container {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Centrer le formulaire */
     gap: 50px;
 }
 
 .contact-form {
-    flex: 2;
+    flex: none; /* Supprimer le flex pour qu'il ne prenne pas toute la largeur */
+    width: 60%; /* Définir une largeur fixe ou max-width */
+    max-width: 700px; /* Limiter la largeur pour ne pas qu'il soit trop étiré */
 }
 
 .contact-form form input,
@@ -324,31 +315,6 @@ section h2 {
 
 .contact-form form button.btn-submit:hover {
     background-color: var(--neon-green);
-}
-
-.contact-info {
-    flex: 1;
-}
-
-.contact-info p {
-    color: var(--gray);
-    margin-bottom: 15px;
-}
-
-.contact-info i {
-    color: var(--neon-purple);
-    margin-right: 10px;
-}
-
-.social-icons a {
-    font-size: 1.8em;
-    margin-right: 15px;
-    color: var(--gray);
-    transition: color 0.3s ease;
-}
-
-.social-icons a:hover {
-    color: var(--neon-purple);
 }
 
 /* Footer */
@@ -406,10 +372,6 @@ footer .container {
 
     header nav ul li {
         margin: 0 15px;
-    }
-
-    .cta-button {
-        margin-top: 10px;
     }
 
     .contact-form,
