@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeus ⚡ - AI Content Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <div x-data="zeusApp()" class="min-h-screen">
+        <!-- Navigation -->
+        <nav class="bg-white shadow-lg">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex justify-between h-16">
+                    <div class="flex items-center">
+                        <h1 class="text-2xl font-bold text-blue-600">Zeus ⚡</h1>
+                        <span class="ml-2 text-gray-500">AI Content Generator</span>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <button @click="activeTab = 'dashboard'" 
+                                :class="activeTab === 'dashboard' ? 'text-blue-600' : 'text-gray-500'"
+                                class="px-3 py-2 rounded-md text-sm font-medium">
+                            <i class="fas fa-tachometer-alt mr-1"></i> Dashboard
+                        </button>
+                        <button @click="activeTab = 'services'" 
+                                :class="activeTab === 'services' ? 'text-blue-600' : 'text-gray-500'"
+                                class="px-3 py-2 rounded-md text-sm font-medium">
+                            <i class="fas fa-cogs mr-1"></i> Services
+                        </button>
+                        <button @click="activeTab = 'files'" 
+                                :class="activeTab === 'files' ? 'text-blue-600' : 'text-gray-500'"
+                                class="px-3 py-2 rounded-md text-sm font-medium">
+                            <i class="fas fa-folder mr-1"></i> Files
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Dashboard Tab -->
+        <div x-show="activeTab === 'dashboard'" class="max-w-7xl mx-auto py-6 px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <!-- Stats Cards -->
+                <div class="bg-white rounded-lg shadow p-6">
+                    <div class="flex items-center">
+                        <div class="p-2 bg-blue-100 rounded-lg">
+                            <i class="fas fa-video text-blue-600"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm font-medium text-gray-500">Videos Created</p>
+                            <p class="text-2xl font-semibold text-gray-900" x-text="stats.videos"></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow p-6">
+                    <div class="flex items-center">
+                        <div class="p-2 bg-green-100 rounded-lg">
+                            <i class="fas fa-microphone text-green-600"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm font-medium text-gray-500">Podcasts</p>
+                            <p class="text-2xl font-semibold text-gray-900" x-text="stats.podcasts"></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow p-6">
+                    <div class="flex items-center">
+                        <div class="p-2 bg-purple-100 rounded-lg">
+                            <i class="fas fa-chart-bar text-purple-600"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm font-medium text-gray-500">Reports</p>
+                            <p class="text-2xl font-semibold text-gray-900" x-text="stats.reports"></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow p-6">
+                    <div class="flex items-center">
+                        <div class="p-2 bg-yellow-100 rounded-lg">
+                            <i class="fas fa-palette text-yellow-600"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm font-medium text-gray-500">Visuals</p>
+                            <p class="text-2xl font-semibold text-gray-900" x-text="stats.visuals"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="bg-white rounded-lg shadow">
+                <div class="px-6 py-4 border-b border-gray-200">
+                    <h3 class="text-lg font-medium text-gray-900">Recent Activity</h3>
+                </div>
+                <div class="p-6">
+                    <div class="space-y-4">
+                        <template x-for="activity in recentActivity" :key="activity.id">
+                            <div class="flex items-center space-x-3">
+                                <div class="flex-shrink-0">
+                                    <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                        <i :class="activity.icon" class="text-blue-600 text-sm"></i>
+                                    </div>
+                                </div>
+                                <div class="flex-1 min-w-0">
+                                    <p class="text-sm font-medium text-gray-900" x-text="activity.title"></p>
+                                    <p class="text-sm text-gray-500" x-text="activity.time"></p>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Services Tab -->
+        <div x-show="activeTab === 'services'" class="max-w-7xl mx-auto py-6 px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Video Service -->
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-video text-blue-600 text-2xl mr-3"></i>
+                        <h3 class="text-xl font-semibold">Video Creation</h3>
+                    </div>
+                    <form @submit.prevent="createVideo()">
+                        <div class="space-y-4">
+                            <input type="text" x-model="videoForm.topic" placeholder="Video topic" 
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <select x-model="videoForm.style" 
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <option value="educational">Educational</option>
+                                <option value="entertainment">Entertainment</option>
+                                <option value="promotional">Promotional</option>
+                            </select>
+                            <input type="number" x-model="videoForm.duration" placeholder="Duration (seconds)" 
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <button type="submit" :disabled="loading.video" 
+                                    class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 disabled:opacity-50">
+                                <span x-show="!loading.video">Create Video</span>
+                                <span x-show="loading.video">Creating...</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Podcast Service -->
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-microphone text-green-600 text-2xl mr-3"></i>
+                        <h3 class="text-xl font-semibold">Podcast Creation</h3>
+                    </div>
+                    <form @submit.prevent="createPodcast()">
+                        <div class="space-y-4">
+                            <input type="text" x-model="podcastForm.topic" placeholder="Podcast topic" 
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
+                            <select x-model="podcastForm.voice_style" 
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
+                                <option value="conversational">Conversational</option>
+                                <option value="professional">Professional</option>
+                                <option value="energetic">Energetic</option>
+                            </select>
+                            <input type="number" x-model="podcastForm.duration" placeholder="Duration (minutes)" 
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
+                            <button type="submit" :disabled="loading.podcast" 
+                                    class="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 disabled:opacity-50">
+                                <span x-show="!loading.podcast">Create Podcast</span>
+                                <span x-show="loading.podcast">Creating...</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Visual Identity Service -->
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-palette text-purple-600 text-2xl mr-3"></i>
+                        <h3 class="text-xl font-semibold">Visual Identity</h3>
+                    </div>
+                    <form @submit.prevent="createVisual()">
+                        <div class="space-y-4">
+                            <select x-model="visualForm.type" 
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
+                                <option value="portrait">AI Portrait</option>
+                                <option value="logo">Logo</option>
+                                <option value="banner">Banner</option>
+                                <option value="quote">Quote Visual</option>
+                                <option value="branding">Branding</option>
+                            </select>
+                            <input type="text" x-model="visualForm.description" placeholder="Description" 
+                                   class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            <select x-model="visualForm.style" 
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500">
+                                <option value="modern">Modern</option>
+                                <option value="minimalist">Minimalist</option>
+                                <option value="artistic">Artistic</option>
+                                <option value="corporate">Corporate</option>
+                            </select>
+                            <button type="submit" :disabled="loading.visual" 
+                                    class="w-full bg-purple-600 text-white py-2 px-4 rounded-md hover:bg-purple-700 disabled:opacity-50">
+                                <span x-show="!loading.visual">Create Visual</span>
+                                <span x-show="loading.visual">Creating...</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Files Tab -->
+        <div x-show="activeTab === 'files'" class="max-w-7xl mx-auto py-6 px-4">
+            <div class="bg-white rounded-lg shadow">
+                <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
+                    <h3 class="text-lg font-medium text-gray-900">Generated Files</h3>
+                    <button @click="loadFiles()" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+                        <i class="fas fa-sync-alt mr-1"></i> Refresh
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <template x-for="file in files" :key="file.name">
+                            <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-sm font-medium text-gray-900" x-text="file.name"></span>
+                                    <span class="text-xs text-gray-500" x-text="file.type"></span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs text-gray-400" x-text="file.size"></span>
+                                    <a :href="file.url" target="_blank" 
+                                       class="text-blue-600 hover:text-blue-800 text-sm">
+                                        <i class="fas fa-external-link-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Modal -->
+        <div x-show="showResult" x-transition class="fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50">
+            <div class="bg-white rounded-lg p-6 max-w-2xl w-full mx-4 max-h-96 overflow-y-auto">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-medium text-gray-900">Generation Result</h3>
+                    <button @click="showResult = false" class="text-gray-400 hover:text-gray-600">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="space-y-4">
+                    <div x-show="result.status === 'success'" class="p-4 bg-green-50 border border-green-200 rounded-md">
+                        <p class="text-green-800 font-medium">✅ Content generated successfully!</p>
+                    </div>
+                    <div x-show="result.status === 'error'" class="p-4 bg-red-50 border border-red-200 rounded-md">
+                        <p class="text-red-800 font-medium">❌ Error occurred during generation</p>
+                    </div>
+                    <pre class="bg-gray-50 p-4 rounded-md text-sm overflow-x-auto" x-text="JSON.stringify(result, null, 2)"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function zeusApp() {
+            return {
+                activeTab: 'dashboard',
+                showResult: false,
+                result: {},
+                loading: {
+                    video: false,
+                    podcast: false,
+                    visual: false
+                },
+                stats: {
+                    videos: 0,
+                    podcasts: 0,
+                    reports: 0,
+                    visuals: 0
+                },
+                recentActivity: [],
+                files: [],
+                videoForm: {
+                    topic: '',
+                    style: 'educational',
+                    duration: 60
+                },
+                podcastForm: {
+                    topic: '',
+                    voice_style: 'conversational',
+                    duration: 30
+                },
+                visualForm: {
+                    type: 'portrait',
+                    style: 'modern',
+                    description: ''
+                },
+
+                async init() {
+                    await this.loadStats();
+                    await this.loadRecentActivity();
+                    await this.loadFiles();
+                },
+
+                async loadStats() {
+                    // Simuler le chargement des statistiques
+                    this.stats = {
+                        videos: Math.floor(Math.random() * 100),
+                        podcasts: Math.floor(Math.random() * 50),
+                        reports: Math.floor(Math.random() * 75),
+                        visuals: Math.floor(Math.random() * 120)
+                    };
+                },
+
+                async loadRecentActivity() {
+                    this.recentActivity = [
+                        { id: 1, title: 'Video created: AI Innovation', icon: 'fas fa-video', time: '2 minutes ago' },
+                        { id: 2, title: 'Podcast generated: Tech Trends', icon: 'fas fa-microphone', time: '15 minutes ago' },
+                        { id: 3, title: 'Visual created: Company Logo', icon: 'fas fa-palette', time: '1 hour ago' },
+                        { id: 4, title: 'Report generated: Market Analysis', icon: 'fas fa-chart-bar', time: '2 hours ago' }
+                    ];
+                },
+
+                async loadFiles() {
+                    try {
+                        const response = await fetch('/files');
+                        const data = await response.json();
+                        this.files = data.files || [];
+                    } catch (error) {
+                        console.error('Error loading files:', error);
+                    }
+                },
+
+                async createVideo() {
+                    this.loading.video = true;
+                    try {
+                        const response = await fetch('/api/video/create', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(this.videoForm)
+                        });
+                        this.result = await response.json();
+                        this.showResult = true;
+                        this.stats.videos++;
+                    } catch (error) {
+                        this.result = { status: 'error', message: error.message };
+                        this.showResult = true;
+                    }
+                    this.loading.video = false;
+                },
+
+                async createPodcast() {
+                    this.loading.podcast = true;
+                    try {
+                        const response = await fetch('/api/podcast/create', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(this.podcastForm)
+                        });
+                        this.result = await response.json();
+                        this.showResult = true;
+                        this.stats.podcasts++;
+                    } catch (error) {
+                        this.result = { status: 'error', message: error.message };
+                        this.showResult = true;
+                    }
+                    this.loading.podcast = false;
+                },
+
+                async createVisual() {
+                    this.loading.visual = true;
+                    try {
+                        const response = await fetch('/api/visual/create', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(this.visualForm)
+                        });
+                        this.result = await response.json();
+                        this.showResult = true;
+                        this.stats.visuals++;
+                    } catch (error) {
+                        this.result = { status: 'error', message: error.message };
+                        this.showResult = true;
+                    }
+                    this.loading.visual = false;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
