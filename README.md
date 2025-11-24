@@ -11,7 +11,7 @@ AI-powered visual search application that helps you discover the best places aro
 - ⚡ Real-time Search
 - 🌐 [Visit Website](https://nearyouapp.xyz/)
 
-### 2. **Digital Card**
+### 2. **Digital QR Card**
 Manage and share your digital business cards effortlessly with QR codes.
 - 💳 Digital Business Cards
 - 📱 QR Code Sharing
