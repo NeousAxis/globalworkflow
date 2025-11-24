@@ -16,7 +16,7 @@ Manage and share your digital business cards effortlessly with QR codes.
 - 💳 Digital Business Cards
 - 📱 QR Code Sharing
 - ⚙️ Easy Management
-- 🔜 Coming Soon
+- 🌐 [Visit Website](https://digitalqrcard.xyz/)
 
 ### 3. **Wise Weather**
 Community-based weather app providing real-time weather updates and forecasts.
