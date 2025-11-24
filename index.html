@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Visionary - Innovative AI Solutions</title>
+    <title>AI Visionary - Innovative Mobile Applications</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Roboto:wght@300;400;500&display=swap"
+        rel="stylesheet">
     <style>
         /* Variables CSS */
         :root {
@@ -162,7 +165,8 @@
         .services {
             padding: 100px 0;
             background-color: var(--bg-dark);
-            scroll-margin-top: 100px; /* Corrigé de 80px à 100px pour correspondre au headerHeight du script */
+            scroll-margin-top: 100px;
+            /* Corrigé de 80px à 100px pour correspondre au headerHeight du script */
         }
 
         .services h2 {
@@ -212,6 +216,74 @@
             color: var(--text-gray);
             line-height: 1.6;
         }
+
+        /* App Card Specific Styles */
+        .app-card {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .app-features {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            text-align: left;
+        }
+
+        .app-features span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .app-features i {
+            font-size: 0.8rem;
+            color: var(--primary-color);
+        }
+
+        .app-link {
+            display: inline-block;
+            margin-top: auto;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--bg-dark);
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .app-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.4);
+        }
+
+        .app-link.coming-soon {
+            background: rgba(255, 255, 0, 0.2);
+            color: var(--accent-color);
+            cursor: default;
+            border: 1px solid var(--accent-color);
+        }
+
+        .app-link.coming-soon:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        .placeholder-card {
+            opacity: 0.7;
+            border-style: dashed;
+        }
+
+        .placeholder-card:hover {
+            opacity: 1;
+        }
+
 
         /* Platforms Section */
         .platforms {
@@ -342,16 +414,16 @@
             .hero h1 {
                 font-size: 2.5rem;
             }
-            
+
             .hero p {
                 font-size: 1rem;
             }
-            
+
             .services-grid,
             .platforms-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .nav-links {
                 display: none;
             }
@@ -363,6 +435,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -374,13 +447,28 @@
             animation: fadeInUp 0.6s ease forwards;
         }
 
-        .service-card:nth-child(2) { animation-delay: 0.1s; }
-        .service-card:nth-child(3) { animation-delay: 0.2s; }
-        .service-card:nth-child(4) { animation-delay: 0.3s; }
-        .service-card:nth-child(5) { animation-delay: 0.4s; }
-        .service-card:nth-child(6) { animation-delay: 0.5s; }
+        .service-card:nth-child(2) {
+            animation-delay: 0.1s;
+        }
+
+        .service-card:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .service-card:nth-child(4) {
+            animation-delay: 0.3s;
+        }
+
+        .service-card:nth-child(5) {
+            animation-delay: 0.4s;
+        }
+
+        .service-card:nth-child(6) {
+            animation-delay: 0.5s;
+        }
     </style>
 </head>
+
 <body>
     <header>
         <nav>
@@ -390,8 +478,8 @@
             </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#platforms">Platforms</a></li>
+                <li><a href="#apps">Apps</a></li>
+                <li><a href="#download">Download</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
@@ -400,78 +488,74 @@
     <main>
         <section id="home" class="hero">
             <div class="hero-content">
-                <h1>Revolutionize your digital presence with AI</h1>
-                <p>Custom artificial intelligence solutions to propel your business into the future</p>
-                <a href="#services" class="cta-button">Discover our services</a>
+                <h1>Innovative Mobile Applications</h1>
+                <p>Discover cutting-edge apps powered by AI technology to enhance your digital life</p>
+                <a href="#apps" class="cta-button">Explore Our Apps</a>
             </div>
         </section>
 
-        <section id="services" class="services">
+        <section id="apps" class="services">
             <div class="container">
-                <h2>Our AI Services</h2>
+                <h2>Our Applications</h2>
                 <div class="services-grid">
-                    <div class="service-card">
-                        <i class="fas fa-share-alt"></i>
-                        <h3>Social Content</h3>
-                        <p>Automatic generation of engaging content for your social networks</p>
+                    <div class="service-card app-card">
+                        <i class="fas fa-camera"></i>
+                        <h3>Near You</h3>
+                        <p>Find what you need by scanning any object. Discover the best places around you with
+                            AI-powered visual search.</p>
+                        <div class="app-features">
+                            <span><i class="fas fa-check"></i> AI Visual Recognition</span>
+                            <span><i class="fas fa-check"></i> Location Discovery</span>
+                            <span><i class="fas fa-check"></i> Real-time Search</span>
+                        </div>
+                        <a href="https://nearyouapp.xyz/" target="_blank" class="app-link">Visit Website →</a>
                     </div>
-                    <div class="service-card">
-                        <i class="fas fa-video"></i>
-                        <h3>Video Creation</h3>
-                        <p>Professional video production with automated scripts and editing</p>
+                    <div class="service-card app-card">
+                        <i class="fas fa-id-card"></i>
+                        <h3>Digital Card</h3>
+                        <p>Manage and share your digital business cards effortlessly. Create professional cards with QR
+                            codes and share them instantly.</p>
+                        <div class="app-features">
+                            <span><i class="fas fa-check"></i> Digital Business Cards</span>
+                            <span><i class="fas fa-check"></i> QR Code Sharing</span>
+                            <span><i class="fas fa-check"></i> Easy Management</span>
+                        </div>
+                        <span class="app-link coming-soon">Coming Soon</span>
                     </div>
-                    <div class="service-card">
-                        <i class="fas fa-podcast"></i>
-                        <h3>Podcasts</h3>
-                        <p>Quality podcast creation with natural synthetic voice</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-chart-line"></i>
-                        <h3>Smart Reports</h3>
-                        <p>Data analysis and detailed report generation</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-calendar-week"></i>
-                        <h3>Weekly Content</h3>
-                        <p>Automatic planning and creation of recurring content</p>
-                    </div>
-                    <div class="service-card">
-                        <i class="fas fa-palette"></i>
-                        <h3>Visual Identity</h3>
-                        <p>Creation of logos, AI portraits and custom graphic elements</p>
+                    <div class="service-card app-card">
+                        <i class="fas fa-cloud-sun"></i>
+                        <h3>Wise Weather</h3>
+                        <p>Community-based weather app providing real-time weather updates and forecasts powered by
+                            collective intelligence.</p>
+                        <div class="app-features">
+                            <span><i class="fas fa-check"></i> Community Weather Reports</span>
+                            <span><i class="fas fa-check"></i> Real-time Forecasts</span>
+                            <span><i class="fas fa-check"></i> Beta Testing Phase</span>
+                        </div>
+                        <a href="https://wiseweatherapp.xyz/" target="_blank" class="app-link">Visit Website →</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="platforms" class="platforms">
+        <section id="download" class="platforms">
             <div class="container">
-                <h2>Our services are available on</h2>
+                <h2>Download Our Apps</h2>
                 <div class="platforms-grid">
                     <div class="platform-card">
-                        <i class="fas fa-briefcase"></i>
-                        <h3>Fiverr</h3>
-                        <p>Find our AI content creation services on Fiverr.</p>
+                        <i class="fab fa-apple"></i>
+                        <span>App Store</span>
+                        <p>Available on iOS devices</p>
                     </div>
                     <div class="platform-card">
-                        <i class="fas fa-laptop-code"></i>
-                        <h3>Upwork</h3>
-                        <p>Engage our AI experts for your projects on Upwork.</p>
+                        <i class="fab fa-google-play"></i>
+                        <span>Google Play</span>
+                        <p>Available on Android devices</p>
                     </div>
                     <div class="platform-card">
-                        <i class="fas fa-handshake"></i>
-                        <h3>Malt</h3>
-                        <p>Discover our AI freelance profiles on Malt.</p>
-                    </div>
-                    <div class="platform-card">
-                        <i class="fas fa-rocket"></i>
-                        <h3>ComeUp</h3>
-                        <p>Access our AI microservices on ComeUp.</p>
-                    </div>
-                    <div class="platform-card">
-                        <i class="fas fa-shopping-cart"></i>
-                        <h3>Gumroad</h3>
-                        <p>Purchase our digital products and AI services directly on Gumroad.</p>
+                        <i class="fas fa-globe"></i>
+                        <span>Web App</span>
+                        <p>Access from any browser</p>
                     </div>
                 </div>
             </div>
@@ -479,7 +563,7 @@
 
         <section id="contact" class="contact">
             <div class="container">
-                <h2>Contact us</h2>
+                <h2>Get in Touch</h2>
                 <form class="contact-form">
                     <div class="form-group">
                         <input type="text" placeholder="Name" required>
@@ -489,13 +573,14 @@
                     </div>
                     <div class="form-group">
                         <select required>
-                            <option value="">Select a service</option>
-                            <option value="social">Social Content</option>
-                            <option value="video">Video Creation</option>
-                            <option value="podcast">Podcasts</option>
-                            <option value="reports">Smart Reports</option>
-                            <option value="weekly">Weekly Content</option>
-                            <option value="visual">Visual Identity</option>
+                            <option value="">Select a topic</option>
+                            <option value="nearyou">Near You App</option>
+                            <option value="digitalcard">Digital Card App</option>
+                            <option value="wiseweather">Wise Weather App</option>
+                            <option value="support">Technical Support</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="partnership">Partnership</option>
+                            <option value="other">Other</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -518,12 +603,12 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                
+
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
                     const headerHeight = 100; // Hauteur du header fixe (corrigé de 80 à 100)
                     const targetPosition = target.offsetTop - headerHeight;
-                    
+
                     window.scrollTo({
                         top: targetPosition,
                         behavior: 'smooth'
@@ -556,13 +641,13 @@
         });
 
         // Gestion du formulaire de contact
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+        document.querySelector('.contact-form').addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             // Ici vous pouvez ajouter la logique pour envoyer le formulaire
             // Par exemple, intégration avec l'API Zeus
-            
-            alert('Merci pour votre message ! Nous vous contacterons bientôt.');
+
+            alert('Thank you for your message! We will contact you soon.');
             this.reset();
         });
 
@@ -576,4 +661,5 @@
         });
     </script>
 </body>
+
 </html>
