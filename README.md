@@ -1,6 +1,6 @@
-# AI Visionary
+# Global Workflow
 
-**AI Visionary** is a showcase website presenting innovative mobile applications powered by AI technology.
+**Global Workflow** is a showcase website presenting innovative mobile applications powered by AI technology.
 
 ## 🚀 Featured Applications
 
@@ -35,7 +35,7 @@ Community-based weather app providing real-time weather updates and forecasts.
 
 ## 🌐 Live Website
 
-Visit the live website at: [ai-visionary.com](https://ai-visionary.com)
+Visit the live website at: [globalworkflow.xyz](https://globalworkflow.xyz)
 
 ## 📦 Technologies Used
 
@@ -47,12 +47,12 @@ Visit the live website at: [ai-visionary.com](https://ai-visionary.com)
 
 ## 🚀 Deployment
 
-This site is deployed using GitHub Pages and is configured with a custom domain (ai-visionary.com).
+This site is deployed using GitHub Pages and is configured with a custom domain (globalworkflow.xyz).
 
 ## 📝 License
 
-© 2024 AI Visionary. All rights reserved.
+© 2024 Global Workflow. All rights reserved.
 
 ## 📧 Contact
 
-For inquiries about our applications, please visit the [contact section](https://ai-visionary.com#contact) on our website.
+For inquiries about our applications, please visit the [contact section](https://globalworkflow.xyz#contact) on our website.
