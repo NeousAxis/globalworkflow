@@ -467,7 +467,32 @@
         .service-card:nth-child(6) {
             animation-delay: 0.5s;
         }
+
+        /* Language Toggle */
+        .lang-toggle {
+            display: flex;
+            gap: 0.5rem;
+            margin-left: 1rem;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--text-light);
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active,
+        .lang-btn:hover {
+            background: var(--primary-color);
+            color: var(--bg-dark);
+        }
     </style>
+    <script src="translations.js"></script>
 </head>
 
 <body>
@@ -478,51 +503,65 @@
                 <span>Global Workflow</span>
             </div>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#apps">Apps</a></li>
-                <li><a href="#download">Download</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home" data-i18n="nav_home">Home</a></li>
+                <li><a href="#apps" data-i18n="nav_apps">Apps</a></li>
+                <li><a href="#download" data-i18n="nav_download">Download</a></li>
+                <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
             </ul>
+            <div class="lang-toggle">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="fr">FR</button>
+            </div>
         </nav>
     </header>
 
     <main>
         <section id="home" class="hero">
             <div class="hero-content">
-                <h1>Innovative Mobile Applications</h1>
-                <p>Discover cutting-edge apps powered by AI technology to enhance social life experience</p>
-                <a href="#apps" class="cta-button">Explore Our Apps</a>
+                <h1 data-i18n="hero_title">Innovative Mobile Applications</h1>
+                <p data-i18n="hero_subtitle">Discover cutting-edge apps powered by AI technology to enhance social life
+                    experience</p>
+                <a href="#apps" class="cta-button" data-i18n="hero_cta">Explore Our Apps</a>
             </div>
         </section>
 
         <section id="apps" class="services">
             <div class="container">
-                <h2>Our Applications</h2>
+                <h2 data-i18n="apps_title">Our Applications</h2>
                 <div class="services-grid">
 
                     <div class="service-card app-card">
                         <i class="fas fa-id-card"></i>
-                        <h3>Digital QR Card</h3>
-                        <p>Manage and share your digital business cards effortlessly. Create professional cards with QR
+                        <h3 data-i18n="app_qr_title">Digital QR Card</h3>
+                        <p data-i18n="app_qr_desc">Manage and share your digital business cards effortlessly. Create
+                            professional cards with QR
                             codes and share them instantly.</p>
                         <div class="app-features">
-                            <span><i class="fas fa-check"></i> Digital Business Cards</span>
-                            <span><i class="fas fa-check"></i> QR Code Sharing</span>
-                            <span><i class="fas fa-check"></i> Easy Share</span>
+                            <span><i class="fas fa-check"></i> <span data-i18n="app_qr_feat1">Digital Business
+                                    Cards</span></span>
+                            <span><i class="fas fa-check"></i> <span data-i18n="app_qr_feat2">QR Code
+                                    Sharing</span></span>
+                            <span><i class="fas fa-check"></i> <span data-i18n="app_qr_feat3">Easy Share</span></span>
                         </div>
-                        <a href="https://digitalqrcard.xyz/" target="_blank" class="app-link">Visit Website →</a>
+                        <a href="https://digitalqrcard.xyz/" target="_blank" class="app-link"
+                            data-i18n="app_qr_btn">Visit Website →</a>
                     </div>
                     <div class="service-card app-card">
                         <i class="fas fa-cloud-sun"></i>
-                        <h3>Wise Weather</h3>
-                        <p>Community-based weather app providing real-time weather updates and forecasts powered by
+                        <h3 data-i18n="app_ww_title">Wise Weather</h3>
+                        <p data-i18n="app_ww_desc">Community-based weather app providing real-time weather updates and
+                            forecasts powered by
                             collective intelligence.</p>
                         <div class="app-features">
-                            <span><i class="fas fa-check"></i> Community Weather Reports</span>
-                            <span><i class="fas fa-check"></i> Real-time Forecasts</span>
-                            <span><i class="fas fa-check"></i> Get Rain, Wind & Snow Alerts</span>
+                            <span><i class="fas fa-check"></i> <span data-i18n="app_ww_feat1">Community Weather
+                                    Reports</span></span>
+                            <span><i class="fas fa-check"></i> <span data-i18n="app_ww_feat2">Real-time
+                                    Forecasts</span></span>
+                            <span><i class="fas fa-check"></i> <span data-i18n="app_ww_feat3">Get Rain, Wind & Snow
+                                    Alerts</span></span>
                         </div>
-                        <a href="https://wiseweatherapp.xyz/" target="_blank" class="app-link">Visit Website →</a>
+                        <a href="https://wiseweatherapp.xyz/" target="_blank" class="app-link"
+                            data-i18n="app_ww_btn">Visit Website →</a>
                     </div>
                 </div>
             </div>
@@ -530,22 +569,22 @@
 
         <section id="download" class="platforms">
             <div class="container">
-                <h2>Download Our Apps</h2>
+                <h2 data-i18n="download_title">Download Our Apps</h2>
                 <div class="platforms-grid">
                     <div class="platform-card">
                         <i class="fab fa-apple"></i>
-                        <span>App Store</span>
-                        <p>Available on iOS devices</p>
+                        <span data-i18n="platform_ios">App Store</span>
+                        <p data-i18n="platform_ios_desc">Available on iOS devices</p>
                     </div>
                     <div class="platform-card">
                         <i class="fab fa-google-play"></i>
-                        <span>Google Play</span>
-                        <p>Available on Android devices</p>
+                        <span data-i18n="platform_android">Google Play</span>
+                        <p data-i18n="platform_android_desc">Available on Android devices</p>
                     </div>
                     <div class="platform-card">
                         <i class="fas fa-globe"></i>
-                        <span>Web App</span>
-                        <p>Access from any browser</p>
+                        <span data-i18n="platform_web">Web App</span>
+                        <p data-i18n="platform_web_desc">Access from any browser</p>
                     </div>
                 </div>
             </div>
@@ -554,23 +593,27 @@
         <section id="custom-dev" class="services"
             style="background: linear-gradient(135deg, rgba(0, 255, 255, 0.05), rgba(10, 10, 10, 0.95));">
             <div class="container">
-                <h2>Custom Development</h2>
+                <h2 data-i18n="custom_title">Custom Development</h2>
                 <div class="service-card app-card"
                     style="max-width: 800px; margin: 0 auto; border-color: var(--accent-color);">
                     <i class="fas fa-laptop-code" style="color: var(--accent-color);"></i>
-                    <h3 style="font-size: 2rem;">Bring Your Idea to Life</h3>
-                    <p style="font-size: 1.1rem; margin-bottom: 2rem;">
-                        Looking for a team to build your mobile application, website, or platform?
+                    <h3 style="font-size: 2rem;" data-i18n="custom_card_title">Bring Your Idea to Life</h3>
+                    <p style="font-size: 1.1rem; margin-bottom: 2rem;" data-i18n="custom_card_desc">
+                        Looking to build your mobile application, website, or platform?
                         We offer premium development services tailored to your needs.
                     </p>
                     <div class="app-features"
                         style="flex-direction: row; justify-content: center; flex-wrap: wrap; gap: 2rem; margin-bottom: 2rem;">
-                        <span><i class="fas fa-check" style="color: var(--accent-color);"></i> Mobile Apps</span>
-                        <span><i class="fas fa-check" style="color: var(--accent-color);"></i> Web Platforms</span>
-                        <span><i class="fas fa-check" style="color: var(--accent-color);"></i> AI Integration</span>
+                        <span><i class="fas fa-check" style="color: var(--accent-color);"></i> <span
+                                data-i18n="custom_feat1">Mobile Apps</span></span>
+                        <span><i class="fas fa-check" style="color: var(--accent-color);"></i> <span
+                                data-i18n="custom_feat2">Web Platforms</span></span>
+                        <span><i class="fas fa-check" style="color: var(--accent-color);"></i> <span
+                                data-i18n="custom_feat3">AI Integration</span></span>
                     </div>
                     <a href="#contact" class="cta-button"
-                        style="background: linear-gradient(135deg, var(--accent-color), var(--primary-color)); align-self: center;">Request
+                        style="background: linear-gradient(135deg, var(--accent-color), var(--primary-color)); align-self: center;"
+                        data-i18n="custom_btn">Request
                         a Quote</a>
                 </div>
             </div>
@@ -578,30 +621,30 @@
 
         <section id="contact" class="contact">
             <div class="container">
-                <h2>Get in Touch</h2>
+                <h2 data-i18n="contact_title">Get in Touch</h2>
                 <form class="contact-form">
                     <div class="form-group">
-                        <input type="text" placeholder="Name" required>
+                        <input type="text" placeholder="Name" required data-i18n="form_name">
                     </div>
                     <div class="form-group">
-                        <input type="email" placeholder="Email" required>
+                        <input type="email" placeholder="Email" required data-i18n="form_email">
                     </div>
                     <div class="form-group">
                         <select required>
-                            <option value="">Select a topic</option>
-                            <option value="digitalcard">Digital QR Card App</option>
-                            <option value="wiseweather">Wise Weather App</option>
-                            <option value="support">Technical Support</option>
-                            <option value="feedback">Feedback</option>
-                            <option value="partnership">Partnership</option>
-                            <option value="quote">Request a Quote</option>
-                            <option value="other">Other</option>
+                            <option value="" data-i18n="form_topic_default">Select a topic</option>
+                            <option value="digitalcard" data-i18n="form_topic_digital">Digital QR Card App</option>
+                            <option value="wiseweather" data-i18n="form_topic_weather">Wise Weather App</option>
+                            <option value="support" data-i18n="form_topic_support">Technical Support</option>
+                            <option value="feedback" data-i18n="form_topic_feedback">Feedback</option>
+                            <option value="partnership" data-i18n="form_topic_partnership">Partnership</option>
+                            <option value="quote" data-i18n="form_topic_quote">Request a Quote</option>
+                            <option value="other" data-i18n="form_topic_other">Other</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <textarea placeholder="Message" rows="5" required></textarea>
+                        <textarea placeholder="Message" rows="5" required data-i18n="form_message"></textarea>
                     </div>
-                    <button type="submit" class="submit-btn">Send</button>
+                    <button type="submit" class="submit-btn" data-i18n="form_btn">Send</button>
                 </form>
             </div>
         </section>
@@ -609,7 +652,9 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 Global Workflow. All rights reserved.</p>
+            <p data-i18n="footer_copy">&copy; 2024 Global Workflow. All rights reserved.</p>
+            <p data-i18n="footer_location" style="margin-top: 0.5rem; font-size: 0.9rem; color: var(--text-gray);">Based
+                in Geneva (Switzerland)</p>
         </div>
     </footer>
 
